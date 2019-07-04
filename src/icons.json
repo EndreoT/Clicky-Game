@@ -2,31 +2,31 @@
   {
     "id": 1,
     "name": "user",
-    "imageUrl": "user"
+    "faviconName": "user"
   },
   {
     "id": 2,
     "name": "coffee",
-    "imageUrl": "coffee"
+    "faviconName": "coffee"
   },
   {
     "id": 3,
     "name": "check-square",
-    "imageUrl": "check-square"
+    "faviconName": "check-square"
   },
   {
     "id": 4,
     "name": "rocket",
-    "imageUrl": "rocket"
+    "faviconName": "rocket"
   },
   {
     "id": 5,
     "name": "fan",
-    "imageUrl": "fan"
+    "faviconName": "fan"
   },
   {
     "id": 6,
     "name": "tachometer-alt",
-    "imageUrl": "tachometer-alt"
+    "faviconName": "tachometer-alt"
   }
 ]

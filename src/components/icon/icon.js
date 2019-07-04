@@ -8,21 +8,7 @@ const styles = {
 }
 
 class Icon extends React.Component {
-  // state = {
-  //   clicked: this.props.clicked,
-  // }
-
-  // handleClick = async () => {
-  //   // console.log(this.state.clicked)
-  //   if (this.state.clicked) {
-  //     return this.props.handleClick(true)
-  //   }
-  //   // console.log('set to true')
-  //   await this.setState({ clicked: true });
-  //   // console.log(this.state.clicked)
-  //   return this.props.handleClick(false)
-  // }
-
+  
   render() {
     return (
       <div>

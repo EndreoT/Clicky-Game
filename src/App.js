@@ -10,17 +10,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 
-import images from './images.json';
-import Icon from './components/icon/icon';
+import icons from './icons.json';
+import Icon from './components/icon/Icon';
 import Message from './components/end-game-message/Message';
 
 library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt);
 
-// Add clicked property to each image
-const preProcessImages = () => {
-  return images.map(image => {
-    image.clicked = false;
-    return image;
+// Add clicked property to each icon
+const preProcessIconJSON = () => {
+  return icons.map(icon => {
+    icon.clicked = false;
+    return icon;
   });
 }
 
@@ -29,7 +29,7 @@ class App extends React.Component {
   state = {
     score: 0,
     topScore: 0,
-    images: preProcessImages(),
+    icons: preProcessIconJSON(),
     gameOver: false,
     gameWon: false,
   }
@@ -39,10 +39,10 @@ class App extends React.Component {
       console.log('game over')
       return
     }
-    const foundIndex = this.state.images.findIndex((item) => {
+    const foundIndex = this.state.icons.findIndex((item) => {
       return item.id === id;
     });
-    const foundItem = this.state.images[foundIndex];
+    const foundItem = this.state.icons[foundIndex];
 
     if (foundItem.clicked) {
       this.updateGameState(true);
@@ -51,8 +51,8 @@ class App extends React.Component {
     } else {
       await this.updateClicked(true, foundIndex);
       await this.incrementScore();
-      await this.shuffleImages();
-      if (this.state.score === this.state.images.length) {
+      await this.shuffleIcons();
+      if (this.state.score === this.state.icons.length) {
         this.updateGameState(true);
         await this.updateGameWon(true);
         console.log('You win!')
@@ -60,31 +60,31 @@ class App extends React.Component {
     }
   }
 
-  uncheckAllImages() {
-    const uncheckedImages = this.state.images.map(image => {
-      image.clicked = false;
-      return image;
+  uncheckAllIcons() {
+    const uncheckedIcons = this.state.icons.map(icon => {
+      icon.clicked = false;
+      return icon;
     });
-    this.setState({ images: uncheckedImages })
+    this.setState({ icons: uncheckedIcons })
   }
 
   updateClicked(clicked, index) {
-    const imageArray = this.state.images;
-    imageArray[index].clicked = clicked;
-    this.setState({ images: imageArray })
+    const IconArray = this.state.icons;
+    IconArray[index].clicked = clicked;
+    this.setState({ icons: IconArray })
   }
 
-  shuffleImages = async () => {
-    const array = this.state.images;
-    const imageLength = array.length;
+  shuffleIcons = async () => {
+    const array = this.state.icons;
+    const arrayLength = array.length;
 
-    for (let i = imageLength - 1; i > 0; i--) {
+    for (let i = arrayLength - 1; i > 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
       const temp = array[randomIndex];
       array[randomIndex] = array[i];
       array[i] = temp;
     }
-    await this.setState({ images: array })
+    await this.setState({ icons: array })
   };
 
   incrementScore = () => {
@@ -106,8 +106,8 @@ class App extends React.Component {
     console.log('reset')
     await this.updateGameState(false);
     await this.updateGameWon(true)
-    await this.shuffleImages();
-    await this.uncheckAllImages()
+    await this.shuffleIcons();
+    await this.uncheckAllIcons()
     await this.setTopScore();
   }
 
@@ -137,15 +137,16 @@ class App extends React.Component {
     return 'You Lose!'
   }
 
-  renderImageCards = () => {
-    return this.state.images.map(image => {
+  renderIconCards = () => {
+    return this.state.icons.map(icon => {
       return (
         <Icon
-          key={image.id}
-          id={image.id}
-          icon={image.imageUrl}
+          key={icon.id}
+          id={icon.id}
+          icon={icon.faviconName}
           handleClick={this.handleClick}
-          clicked={image.clicked}></Icon>
+          clicked={icon.clicked}>
+        </Icon>
       );
     })
   }
@@ -167,7 +168,7 @@ class App extends React.Component {
 
         <Container>
           {/* Icons */}
-          {this.renderImageCards()}
+          {this.renderIconCards()}
 
         </Container>
 

@@ -14,6 +14,7 @@ import icons from './icons.json';
 import Icon from './components/icon/Icon';
 import Message from './components/end-game-message/Message';
 
+
 library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt);
 
 // Add clicked property to each icon
@@ -34,32 +35,32 @@ class App extends React.Component {
     gameWon: false,
   }
 
+  // Main event handler on icon click
   handleClick = async (id) => {
+    // Check if game over. Prevent icon click if true
     if (this.state.gameOver) {
-      console.log('game over')
       return
     }
+    // Linear seach to find clicked item
     const foundIndex = this.state.icons.findIndex((item) => {
       return item.id === id;
     });
     const foundItem = this.state.icons[foundIndex];
 
-    if (foundItem.clicked) {
-      this.updateGameState(true);
-      console.log('You lose!')
-
+    if (foundItem.clicked) { // Icon has already been clicked. Game over -> Loss
+      await this.updateGameState(true);
     } else {
       await this.updateClicked(true, foundIndex);
       await this.incrementScore();
       await this.shuffleIcons();
-      if (this.state.score === this.state.icons.length) {
-        this.updateGameState(true);
+      if (this.state.score === this.state.icons.length) { // All icons have been clicked only once. Game over -> Win
+        await this.updateGameState(true);
         await this.updateGameWon(true);
-        console.log('You win!')
       }
     }
   }
 
+  // Set clicked property to false for all icons
   uncheckAllIcons() {
     const uncheckedIcons = this.state.icons.map(icon => {
       icon.clicked = false;
@@ -68,6 +69,7 @@ class App extends React.Component {
     this.setState({ icons: uncheckedIcons })
   }
 
+  // Update clicked property for icon
   updateClicked(clicked, index) {
     const IconArray = this.state.icons;
     IconArray[index].clicked = clicked;
@@ -103,7 +105,6 @@ class App extends React.Component {
   }
 
   handleResetGame = async () => {
-    console.log('reset')
     await this.updateGameState(false);
     await this.updateGameWon(true)
     await this.shuffleIcons();

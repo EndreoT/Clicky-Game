@@ -8,10 +8,11 @@ import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 // Bootstrap imports
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container'
 
 import images from './images.json';
 import Icon from './components/icon/icon';
-
+import Message from './components/end-game-message/Message';
 
 library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt);
 
@@ -30,10 +31,7 @@ class App extends React.Component {
     topScore: 0,
     images: preProcessImages(),
     gameOver: false,
-  }
-
-  updateGameState(state) {
-    this.setState({ gameOver: state })
+    gameWon: false,
   }
 
   handleClick = async (id) => {
@@ -56,10 +54,10 @@ class App extends React.Component {
       await this.shuffleImages();
       if (this.state.score === this.state.images.length) {
         this.updateGameState(true);
+        await this.updateGameWon(true);
         console.log('You win!')
       }
     }
-    console.log(this.state.images)
   }
 
   uncheckAllImages() {
@@ -89,7 +87,6 @@ class App extends React.Component {
     await this.setState({ images: array })
   };
 
-
   incrementScore = () => {
     this.setState({ score: this.state.score + 1 })
   }
@@ -108,9 +105,36 @@ class App extends React.Component {
   handleResetGame = async () => {
     console.log('reset')
     await this.updateGameState(false);
+    await this.updateGameWon(true)
     await this.shuffleImages();
     await this.uncheckAllImages()
     await this.setTopScore();
+  }
+
+  updateGameState(state) {
+    this.setState({ gameOver: state })
+  }
+
+  updateGameWon = (won) => {
+    this.setState({ gameWon: won })
+  }
+
+  isGameWon = () => {
+    return this.state.gameOver && this.state.gameWon;
+  }
+
+  determineVariant = () => {
+    if (this.isGameWon()) {
+      return 'success'
+    }
+    return 'danger';
+  }
+
+  determineMessage = () => {
+    if (this.isGameWon()) {
+      return 'You Win!'
+    }
+    return 'You Lose!'
   }
 
   renderImageCards = () => {
@@ -130,13 +154,23 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <header className="App-header">
-        <h1>Clicky Game</h1>
-          <div id='score'>Score: {this.state.score} | Top Score: {this.state.topScore}</div>
-          <Button variant="success" onClick={this.handleResetGame}>Reset Game</Button>
-        </header>
+        <Container>
+          <header className="App-header">
+            <h1>Clicky Game</h1>
+            <div id='score'>Score: {this.state.score} | Top Score: {this.state.topScore}</div>
+            <Button variant="success" onClick={this.handleResetGame}>Reset Game</Button>
+          </header>
+        </Container>
 
-        {this.renderImageCards()}
+        {/* Game over message */}
+        <Message show={this.state.gameOver} variant={this.determineVariant()} message={this.determineMessage()}></Message>
+
+        <Container>
+          {/* Icons */}
+          {this.renderImageCards()}
+
+        </Container>
+
       </div>
     );
   }

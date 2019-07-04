@@ -29,7 +29,7 @@ class Icon extends React.Component {
         <FontAwesomeIcon
           onClick={() => this.props.handleClick(this.props.id)}
           style={styles.icon} icon={this.props.icon}
-          size="8x" border fixedWidth pull="left"
+          size="10x" border fixedWidth pull="left"
         />
       </div>
     );

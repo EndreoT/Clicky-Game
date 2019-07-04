@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "user",
+    "imageUrl": "user"
+  },
+  {
+    "id": 2,
+    "name": "coffee",
+    "imageUrl": "coffee"
+  },
+  {
+    "id": 3,
+    "name": "check-square",
+    "imageUrl": "check-square"
+  },
+  {
+    "id": 4,
+    "name": "rocket",
+    "imageUrl": "rocket"
+  },
+  {
+    "id": 5,
+    "name": "fan",
+    "imageUrl": "fan"
+  },
+  {
+    "id": 6,
+    "name": "tachometer-alt",
+    "imageUrl": "tachometer-alt"
+  }
+]

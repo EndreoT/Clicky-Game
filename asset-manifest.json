@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/clicky-game/static/css/main.fedbf97a.chunk.css",
-    "main.js": "/clicky-game/static/js/main.5e0c7a82.chunk.js",
-    "main.js.map": "/clicky-game/static/js/main.5e0c7a82.chunk.js.map",
-    "runtime~main.js": "/clicky-game/static/js/runtime~main.27874bd3.js",
-    "runtime~main.js.map": "/clicky-game/static/js/runtime~main.27874bd3.js.map",
-    "static/css/2.510409cd.chunk.css": "/clicky-game/static/css/2.510409cd.chunk.css",
-    "static/js/2.f19c2b6d.chunk.js": "/clicky-game/static/js/2.f19c2b6d.chunk.js",
-    "static/js/2.f19c2b6d.chunk.js.map": "/clicky-game/static/js/2.f19c2b6d.chunk.js.map",
-    "index.html": "/clicky-game/index.html",
-    "precache-manifest.ca699654828c11146fcd155f15002ebc.js": "/clicky-game/precache-manifest.ca699654828c11146fcd155f15002ebc.js",
-    "service-worker.js": "/clicky-game/service-worker.js",
-    "static/css/2.510409cd.chunk.css.map": "/clicky-game/static/css/2.510409cd.chunk.css.map",
-    "static/css/main.fedbf97a.chunk.css.map": "/clicky-game/static/css/main.fedbf97a.chunk.css.map",
-    "static/media/index.css": "/clicky-game/static/media/background.485468fe.jpg"
+    "main.css": "./static/css/main.a0a0430b.chunk.css",
+    "main.js": "./static/js/main.2f24bfa9.chunk.js",
+    "main.js.map": "./static/js/main.2f24bfa9.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+    "static/css/2.510409cd.chunk.css": "./static/css/2.510409cd.chunk.css",
+    "static/js/2.f19c2b6d.chunk.js": "./static/js/2.f19c2b6d.chunk.js",
+    "static/js/2.f19c2b6d.chunk.js.map": "./static/js/2.f19c2b6d.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.ff7ac58e5509631c6fb3c02ac39e0a42.js": "./precache-manifest.ff7ac58e5509631c6fb3c02ac39e0a42.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.510409cd.chunk.css.map": "./static/css/2.510409cd.chunk.css.map",
+    "static/css/main.a0a0430b.chunk.css.map": "./static/css/main.a0a0430b.chunk.css.map",
+    "static/media/index.css": "./static/media/background.485468fe.jpg"
   }
 }

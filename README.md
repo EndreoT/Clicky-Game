@@ -1,3 +1,12 @@
+# Clicky Game
+
+Deployed link:
+
+## Description 
+A simple memory game in which users have to click on icons that they have not previously clicked on. Icons shuffle after each click.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

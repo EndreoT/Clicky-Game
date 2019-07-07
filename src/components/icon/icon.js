@@ -1,19 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const styles = {
-  icon: {
-    'marginTop': '50px',
-  }
-}
 
 class Icon extends React.Component {
 
   state = {
     hover: false,
     style: {
-      marginTop: '50px',
+      margin: '20px',
       cursor: 'pointer',
+      backgroundColor: 'rgb(96, 125, 139)'
     }
   }
 
@@ -32,16 +28,21 @@ class Icon extends React.Component {
   }
 
   render() {
-    
+
     return (
-      <div>
+      <React.Fragment>
         <FontAwesomeIcon
           onClick={() => this.props.handleClick(this.props.id)}
-          style={{ ...this.state.style, ...this.setColorOnHover() }} icon={this.props.icon}
-          size="10x" border fixedWidth pull="left"
-          onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}
+          style={{ ...this.state.style, ...this.setColorOnHover() }}
+          icon={this.props.icon}
+          onMouseEnter={this.toggleHover} 
+          onMouseLeave={this.toggleHover}
+          spin={this.state.hover}
+          size="10x" 
+          border 
+          fixedWidth 
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

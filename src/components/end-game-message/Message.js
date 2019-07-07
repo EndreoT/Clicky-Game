@@ -5,7 +5,10 @@ import Alert from 'react-bootstrap/Alert'
 function Message(props) {
   return (
     <div>
-      <Alert variant={props.variant} show={props.show}>
+      <Alert
+        style={{ textAlign: 'center' }}
+        variant={props.variant}
+        show={props.show}>
         {props.message}
       </Alert>
     </div>

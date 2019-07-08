@@ -5,33 +5,36 @@ import Button from 'react-bootstrap/Button';
 
 const styles = {
   'textAlign': 'center',
-  'backgroundColor': '#e9ecef'
+  'backgroundColor': 'rgb(48, 99, 127)',
+  color: 'white'
 };
 
-function Nav (props) {
+const Nav = (props) => {
 
   return (
     <Container
       fluid="true"
-          style={styles}
-      >
+      style={styles}
+    >
       <h1 >
-Clicky Game
+        Clicky Game
         </h1>
       <div id="score">
-Score:
+        Score:
+        {' '}
         {props.score}
         {' '}
-| Top Score:
-            {props.topScore}
-        </div>
+        | Top Score:
+        {' '}
+        {props.topScore}
+      </div>
       <Button
         variant="success"
-            onClick={() => props.handleResetGame()}
-        >
+        onClick={() => props.handleResetGame()}
+      >
         Reset Game
         </Button>
-      </Container>
+    </Container>
   );
 
 }

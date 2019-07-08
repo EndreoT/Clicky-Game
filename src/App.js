@@ -3,10 +3,9 @@ import React from 'react';
 import Game from './components/Game';
 
 
-function App () {
+const App = () => (
+  <Game />
+);
 
-  return <Game />;
-
-}
 
 export default App;

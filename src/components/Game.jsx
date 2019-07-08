@@ -41,7 +41,7 @@ class Game extends React.Component {
       return
     }
     // Linear seach to find clicked item
-    const foundIndex = this.state.icons.findIndex((item) => {
+    const foundIndex = this.state.icons.findIndex(item => {
       return item.id === id;
     });
     const foundItem = this.state.icons[foundIndex];
@@ -88,27 +88,27 @@ class Game extends React.Component {
     await this.setState({ icons: array })
   };
 
-  incrementScore = () => {
-    this.setState({ score: this.state.score + 1 })
+  incrementScore = async () => {
+    await this.setState({ score: this.state.score + 1 })
+    await this.setTopScore();
   }
 
   resetScore = () => {
     this.setState({ score: 0 })
   }
 
-  setTopScore = () => {
+  setTopScore = async () => {
     if (this.state.score > this.state.topScore) {
-      this.setState({ topScore: this.state.score });
+      await this.setState({ topScore: this.state.score });
     }
-    this.resetScore();
   }
 
   handleResetGame = async () => {
     await this.updateGameState(false);
-    await this.updateGameWon(false)
+    await this.updateGameWon(false);
+    await this.resetScore();
     await this.shuffleIcons();
     await this.uncheckAllIcons()
-    await this.setTopScore();
   }
 
   updateGameState(state) {
@@ -138,8 +138,7 @@ class Game extends React.Component {
   }
 
   renderIconCards = () => {
-    return this.state.icons.map(icon => {
-      return (
+    return this.state.icons.map(icon =>  (
         <Icon
           key={icon.id}
           id={icon.id}
@@ -147,8 +146,8 @@ class Game extends React.Component {
           handleClick={this.handleClick}
           clicked={icon.clicked}>
         </Icon>
-      );
-    })
+      )
+    );
   }
 
   render() {
@@ -161,8 +160,13 @@ class Game extends React.Component {
         />
 
         {/* Game over message */}
-        <Message show={this.state.gameOver} variant={this.determineVariant()} message={this.determineMessage()}></Message>
+        <Message
+          show={this.state.gameOver}
+          variant={this.determineVariant()}
+          message={this.determineMessage()}>
+        </Message>
 
+        {/* Icons */}
         <IconWrapper renderIconCards={this.renderIconCards} />
       </div>
     );

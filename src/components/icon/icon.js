@@ -17,6 +17,18 @@ class Icon extends React.Component {
     await this.setState({ hover: !this.state.hover })
   }
 
+  setHover = async (hover) => {
+    await this.setState({ hover })
+  }
+
+  setHoverFalse = async () => {
+    await this.setHover(false)
+  }
+
+  setHoverTrue = async () => {
+    await this.setState({ hover: true })
+  }
+
   setColorOnHover = () => {
     let color;
     if (this.state.hover) {
@@ -27,20 +39,25 @@ class Icon extends React.Component {
     return color
   }
 
+  handleClick = async () => {
+    await this.setHover(false);
+    this.props.handleClick(this.props.id)
+  }
+
   render() {
 
     return (
       <React.Fragment>
         <FontAwesomeIcon
-          onClick={() => this.props.handleClick(this.props.id)}
+          onClick={this.handleClick}
           style={{ ...this.state.style, ...this.setColorOnHover() }}
           icon={this.props.icon}
-          onMouseEnter={this.toggleHover} 
-          onMouseLeave={this.toggleHover}
+          onMouseEnter={this.setHoverTrue}
+          onMouseLeave={this.setHoverFalse}
           spin={this.state.hover}
-          size="10x" 
-          border 
-          fixedWidth 
+          size="10x"
+          border
+          fixedWidth
         />
       </React.Fragment>
     );

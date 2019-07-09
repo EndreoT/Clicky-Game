@@ -26,9 +26,9 @@ class Game extends React.Component {
   }
 
   // Shuffle icons on page load
-  componentWillMount() {
-    this.shuffleIcons()
-  }
+  // componentWillMount() {
+  //   this.shuffleIcons()
+  // }
 
   // Main event handler on icon click
   handleClick = async (id) => {

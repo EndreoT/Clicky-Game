@@ -28,5 +28,20 @@
     "id": 6,
     "name": "tachometer-alt",
     "faviconName": "tachometer-alt"
+  },
+  {
+    "id": 7,
+    "name": "adjust",
+    "faviconName": "adjust"
+  },
+  {
+    "id": 8,
+    "name": "skiing",
+    "faviconName": "skiing"
+  },
+  {
+    "id": 9,
+    "name": "hamburger",
+    "faviconName": "hamburger"
   }
 ]

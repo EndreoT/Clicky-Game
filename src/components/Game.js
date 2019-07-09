@@ -3,7 +3,7 @@ import React from 'react';
 // Fontawesome imports
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faRocket, faFan, faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faAdjust, faSkiing, faHamburger } from '@fortawesome/free-solid-svg-icons'
 
 // Bootstrap imports
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,7 +14,7 @@ import IconWrapper from './IconWrapper'
 import Message from './end-game-message/Message';
 import Nav from './Nav'
 
-library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt);
+library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt, faAdjust, faSkiing, faHamburger);
 
 // Add clicked property to each icon
 const preProcessIconJSON = () => {

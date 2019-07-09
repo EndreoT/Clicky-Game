@@ -1,20 +1,11 @@
 import React from 'react';
 
-// Fontawesome imports
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUser, faRocket, faFan, faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
-import { faCheckSquare, faCoffee, faAdjust, faSkiing, faHamburger } from '@fortawesome/free-solid-svg-icons'
-
-// Bootstrap imports
-import 'bootstrap/dist/css/bootstrap.css';
-
 import icons from './icon/icons.json';
 import Icon from './icon/Icon';
 import IconWrapper from './IconWrapper'
 import Message from './end-game-message/Message';
 import Nav from './Nav'
 
-library.add(faUser, faCheckSquare, faCoffee, faRocket, faFan, faTachometerAlt, faAdjust, faSkiing, faHamburger);
 
 // Add clicked property to each icon
 const preProcessIconJSON = () => {
@@ -32,6 +23,11 @@ class Game extends React.Component {
     icons: preProcessIconJSON(),
     gameOver: false,
     gameWon: false,
+  }
+
+  // Shuffle icons on page load
+  componentWillMount() {
+    this.shuffleIcons()
   }
 
   // Main event handler on icon click
@@ -60,7 +56,7 @@ class Game extends React.Component {
   }
 
   // Set clicked property to false for all icons
-  uncheckAllIcons() {
+  uncheckAllIcons = () => {
     const uncheckedIcons = this.state.icons.map(icon => {
       icon.clicked = false;
       return icon;
@@ -69,7 +65,7 @@ class Game extends React.Component {
   }
 
   // Update clicked property for icon
-  updateClicked(clicked, index) {
+  updateClicked = (clicked, index) => {
     const IconArray = this.state.icons;
     IconArray[index].clicked = clicked;
     this.setState({ icons: IconArray })
@@ -111,7 +107,7 @@ class Game extends React.Component {
     await this.uncheckAllIcons()
   }
 
-  updateGameState(state) {
+  updateGameState = (state) => {
     this.setState({ gameOver: state })
   }
 
